@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+{% block postaction %}
+    <a class="nav-item nav-link" href="{% url 'year-create' %}">New Roll Year</a>
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form action="/rollofhonour/" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="OK">
+</form>
+{% endblock content %}

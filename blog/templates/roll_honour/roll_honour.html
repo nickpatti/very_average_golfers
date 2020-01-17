@@ -1,1 +1,47 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <article class="roll-honour-split m-page scene_element scene_element--fadeinup" style="overflow: auto;">
+        <h2 class="roll-tr-title">Events</h2>
+        {% for eventroll in events %}
+            <div class="roll-section">
+                <div style="border: 8px solid black;">
+                    <div style="border: 3px solid #b38f00; overflow:hidden; background-image: url('/static/images/wood.jpg'">
+                        <h2 style="font-style: italic; text-align: center;"><a class="gold-text" href="{% url 'event-detail' eventroll.id %}">{{ eventroll.title}}</a></h2>
+                        <div style="color: #ffcc33; font-family: monotypecorsiva;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    </article>
 
+    <article class="roll-honour-split m-page scene_element scene_element--fadeinup" style="overflow: auto;">
+        <h2 class="roll-tr-title">Year</h2>
+        {% for yearroll in rolls %}
+            <div class="roll-section">
+                <div style="border: 8px solid black;">
+                    <div style="border: 3px solid #b38f00; overflow:hidden; background-image: url('/static/images/wood.jpg'">
+                        <h2 style="font-style: italic; text-align: center"><a class="gold-text" href="{% url 'year-detail' yearroll.id %}">{{ yearroll.title}}</a></h2>
+                        <div style="color: #ffcc33; font-family: monotypecorsiva;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    </article>
+
+    <article class="roll-honour-split m-page scene_element scene_element--fadeinup" style="overflow: auto;">
+        <h2 class="roll-tr-title">Highs and Lows</h2>
+        {% for alltimeroll in records %}
+           <div class="roll-section">
+                <div style="border: 8px solid black;">
+                    <div style="border: 3px solid #b38f00; overflow:hidden; background-image: url('/static/images/wood.jpg'">
+                        <h2 style="font-style: italic; text-align: center"><a class="gold-text" href="{% url 'alltime-detail' alltimeroll.id %}">{{ alltimeroll.title}}</a></h2>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    </article>
+
+
+{% endblock %}

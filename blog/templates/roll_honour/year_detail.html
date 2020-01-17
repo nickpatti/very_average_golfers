@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% block postaction %}
+    <a class="nav-item nav-link tab" href="{% url 'year-create' %}">New Roll Year</a>
+{% endblock %}
+{% block content%}
+
+  <article class="media content-section m-page scene_element scene_element--fadeinright">
+    <div class="media-body">
+      <div class="article-metadata">
+        {% if object.author == user %}
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'year-update' object.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'year-delete' object.id %}">Delete</a>
+          </div>
+        {% endif %}
+      </div>
+      <div style="border: 8px solid black;">
+        <div style="border: 3px solid #b38f00; background-image: url('/static/images/wood.jpg'">
+          <h2 style="text-align: center;" class="article-title gold-text">{{ object.title }}</h2>
+          <p style="color: #ffcc33;font-family: monotypecorsiva;" class="article-content gold-text">{{ object.table|safe }}</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+{% endblock content %}
