@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+{% block postaction %}
+    <a class="nav-item nav-link" href="{% url 'links-create' %}">New Link</a>
+{% endblock %}
+{% block content%}
+    {% for linkspost in links %}
+        <article class="media content-section m-page scene_element scene_element--fadeinup" style="height:10vh;">
+            <a href="{% url 'links-detail' linkspost.id %}"><img class="article-img" style="padding-top: 1vh" src="{{linkspost.image.url}}"></a>
+            <div class="media-body">
+                <h2 class="links-title"><a>{{ linkspost.title|safe }}</a></h2>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
