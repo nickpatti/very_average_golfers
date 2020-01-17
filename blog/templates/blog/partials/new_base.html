@@ -1,0 +1,71 @@
+{% block css %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'gallery/css/new_main.css' %}">
+
+    <style>
+    .dropdown:hover .dropdown-content {display: block;}
+
+    </style>
+    <script>
+
+    $(document).ready(function(){
+        $(".dropdown-toggle").dropdown();
+    });
+    </script>
+
+
+{% endblock %}
+
+
+    {% for post in homepage %}
+
+        <div id="logo_preview" class="outside" style="background-image: linear-gradient(to right, #7030a0 10%, #333); width: 100%; height:10%; overflow: auto">
+            <a href="{% url 'vag-home' %}"><img src='{{ post.logo.url }}' style="width:7%; height: auto; float: left; padding-top: 1vh;" /></a>
+
+            <div id="banner_text">
+                <h1 style="color: white; font-size: 2vw;">{{ post.title }}</h1>
+            </div>
+<!--             <div id="wrapper"> -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="tab-container">
+                <div class="tab">
+
+                    <a style="font-size: 1vw" href="{% url 'members' %}"><button class="tab">Members</button></a>
+
+                    <a style="font-size: 1vw" href="{% url 'articles' %}"><button class="tab">Articles of Association</button></a>
+
+                    <!-- <button class="dropdown-toggle" data-toggle="dropdown">Articles of Association</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'trophy-room' %}">Trophy Room</a></li>
+                        <li><a href="{% url 'competitions' %}">Competitions</a></li>
+                        <li><a href="{% url 'socials' %}">Socials</a></li>
+                        <li><a href="{% url 'traditions' %}">Traditions</a></li>
+                    </ul> -->
+
+
+                    <a style="font-size: 1vw" class="tab" href="{% url 'gallery:album_list' %}"><button class="tab">Gallery</button></a>
+
+                    <a style="font-size: 1vw" class="tab" href="{% url 'roll' %}"><button class="tab">Roll Of Honour</button></a>
+
+                    <!-- <button class="dropdown-toggle" data-toggle="dropdown">Roll of Honour</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="tab" href="{% url 'roll-event' %}">Roll by Event</a></li>
+                        <li><a class="tab" href="{% url 'roll-year' %}">Roll by Year</a></li>
+                        <li><a class="tab" href="{% url 'roll-alltime' %}">Records</a></li>
+                    </ul> -->
+
+
+                    <a style="font-size: 1vw" class="tab" href="{% url 'links' %}"><button class="tab">Links</button></a>
+
+                </div>
+            </div>
+      <!--   </div> -->
+
+
+    {% endfor %}
+    </nav>
+
+</header>
+<div class="separation-bar"></div>
