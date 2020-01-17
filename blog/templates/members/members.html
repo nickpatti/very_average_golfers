@@ -1,1 +1,42 @@
+{% extends "blog/base.html" %}
+{% block content%}
+{% load thumbnail %}
 
+<style>
+.centre {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+    {% for members in member %}
+
+        <article class="media content-section closed-in m-page scene_element scene_element--fadeinup">
+            <div class="media-body">
+                <h1 style="font-size: 1.8vw;" align="center"><a class="article-title" href="{% url 'members-detail' members.id %}">{{ members.title }}</a></h1>
+                <br>
+                <h2 style="font-size: 1.7vw;" align="center"><a class="article-content">{{ members.high_chair }}</a></h2>
+                <img src='{{ members.high_chair_image.url }}' class='centre' style="width:50%; height: auto; padding: 2vh; border-radius: 3vh" />
+            </div>
+        </article>
+        <article class="media content-section closed-in">
+            <div class="media-body">
+                <h3 style="font-size: 1.5vw;" align="center"><a class="article-content">{{ members.chair }}</a></h3>
+                <img src='{{ members.chair_image.url }}' class='centre' style="width:45%; height: auto; padding: 2vh; border-radius: 3vh" />
+            </div>
+        </article>
+        <article class="media content-section closed-in">
+            <div class="media-body">
+                <h4 style="font-size: 1.3vw;" align="center"><a class="article-content">{{ members.under_chair }}</a></h4>
+                <img src='{{ members.under_chair_image.url }}' class='centre' style="width:40%; height: auto; padding: 2vh; border-radius: 3vh;"/>
+            </div>
+        </article>
+        <article class="media content-section closed-in" style="border-bottom: none;">
+            <div class="media-body">
+                <p style="font-size: 1vw;" align="center"><a class="article-content">{{ members.humble }}</a></p>
+                <img src='{{ members.humble_image.url }}' class='centre' style="width:30%; height: auto; padding: 2vh; border-radius: 3vh;" />
+            </div>
+        </article>
+    {% endfor %}
+    <div class="closing-bar"></div>
+{% endblock content %}
