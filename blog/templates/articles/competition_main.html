@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+{% block postaction %}
+    <a class="nav-item nav-link tab" href="{% url 'competitions-create' %}">New Competition</a>
+{% endblock %}
+{% block content %}
+{% for template in templates %}
+  {% if template.template_picker == 'new_template' %}
+    <a href="{% url 'trophy-room' %}"><article class="article-button">
+      <h2 class="article-tr-title">Trophy Room</h2>
+    </article></a>
+    <a href="{% url 'competitions' %}"><article class="article-button active">
+      <h2 class="article-tr-title">Competitions</h2>
+      </article></a>
+    <a href="{% url 'socials' %}"><article class="article-button">
+      <h2 class="article-tr-title">Socials</h2>
+    </article></a>
+    <a href="{% url 'traditions' %}"><article class="article-button">
+      <h2 class="article-tr-title">Traditions</h2>
+    </article></a>
+    <div style="padding-top: 8vh;">
+  {% endif %}
+{% endfor %}
+
+    {% for competitionspost in competitions %}
+      {% for template in templates %}
+        {% if template.template_picker == 'new_template' %}
+
+          <a href="{% url 'competitions-detail' competitionspost.id %}"><article class="article-section">
+            <h3 style="font-size: 3vmin;" class="article-title">{{ competitionspost.title }}</h3>
+            <div style="padding-left: 3vh; padding-bottom:1vh; color: #D6D6D6;"></a>
+                <p>{{ competitionspost.content2|truncatechars:260|safe }}</p>
+            </div>
+
+        {% else %}
+          </div>
+          <article class="media content-section">
+            <h2><a class="article-title" href="{% url 'competitions-detail' competitionspost.id %}">{{ competitionspost.title }}</h2>
+          </article></a>
+        {% endif %}
+      {% endfor %}
+
+
+        </article>
+    </div>
+    {% endfor %}
+{% endblock content %}

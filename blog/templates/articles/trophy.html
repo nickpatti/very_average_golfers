@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+{% load thumbnail %}
+{% load static %}
+{% block postaction %}
+  <a class="nav-item nav-link tab" href="{% url 'trophy-create' %}">New Trophy</a>
+{% endblock %}
+{% block content %}
+{% for template in templates %}
+  {% if template.template_picker == 'new_template' %}
+    <a href="{% url 'trophy-room' %}"><article class="article-button active">
+      <h2 class="article-tr-title">Trophy Room</h2>
+    </article></a>
+    <a href="{% url 'competitions' %}"><article class="article-button">
+      <h2 class="article-tr-title">Competitions</h2>
+      </article></a>
+    <a href="{% url 'socials' %}"><article class="article-button">
+      <h2 class="article-tr-title">Socials</h2>
+    </article></a>
+    <a href="{% url 'traditions' %}"><article class="article-button">
+      <h2 class="article-tr-title">Traditions</h2>
+    </article></a>
+    <div style="padding-top: 8vh;">
+  {% endif %}
+{% endfor %}
+
+    {% for trophypost in trophy %}
+        <article class="media content-section closed-in">
+          <div class="media-body" style="padding-left: 3vh; padding-right: 3vh; text-align: center">
+            <h2 align="center"><a class="article-title" href="{% url 'trophy-detail' trophypost.id %}">{{ trophypost.title }}</a></h2>
+            <p>{{ trophypost.content|safe }}</p>
+          </div>
+        </article>
+    </div>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+{% load thumbnail %}
+{% block postaction %}
+    <a class="nav-item nav-link" href="{% url 'competitions-create' %}">New Competition</a>
+{% endblock %}
+{% block content%}
+
+  <article class="media content-section closed-in m-page scene_element scene_element--fadeinright">
+
+    <div class="media-body">
+      <div class="article-metadata">
+        {% if object.author == user %}
+          <div style="text-align:center">
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'competitions-update' object.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'competitions-delete' object.id %}">Delete</a>
+          </div>
+        {% endif %}
+      </div>
+      <h2 class="article-title">{{ object.title }}</h2>
+      <div class="article-content-div">
+        <p class="article-content">{{ object.content|safe }}</p>
+        <p class="article-content">{{ object.content2|safe }}</p>
+      </div>
+    </div>
+  </article>
+
+{% endblock content %}
