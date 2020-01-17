@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% block postaction %}
+{% if user.is_superuser %}
+    <a class="nav-item nav-link" href="{% url 'changelog-create' %}">Add Changelog</a>
+{% endif %}
+{% endblock %}
+{% block content%}
+    <article class="media content-section closed-in">
+      <div class="media-body">
+        {% if object.author == user %}
+            <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'changelog-update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'changelog-delete' object.id %}">Delete</a>
+            </div>
+        {% endif %}
+        <h2 align="center"><a class="article-title" href="{% url 'changelog-detail' object.id %}">{{ object.title }} : {{ object.date_posted }}</a></h2>
+        <p class="article-content">{{ object.content|safe }}</p>
+      </div>
+    </article>
+{% endblock content %}

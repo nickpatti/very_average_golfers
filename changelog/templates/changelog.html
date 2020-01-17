@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block postaction %}
+{% if user.is_superuser %}
+    <a class="nav-item nav-link" href="{% url 'changelog-create' %}">Add Changelog</a>
+{% endif %}
+{% endblock %}
+{% block content%}
+    {% for changelog in changes %}
+        <article class="media content-section closed-in">
+          <div class="media-body">
+            <h2 align="center"><a class="article-title" href="{% url 'changelog-detail' changelog.id %}">{{ changelog.title }} : {{ changelog.date_posted }}</a></h2>
+            <p class="article-content">{{ changelog.content|safe }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
