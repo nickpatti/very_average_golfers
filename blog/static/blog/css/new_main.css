@@ -1,0 +1,251 @@
+body {
+      background-color: #1a1a1a;
+    }
+
+img{
+    max-width: 100%;
+    max-height: auto;
+}
+
+
+#banner_text{
+    padding-top:3%;
+    padding-left: 2%;
+    color: white;
+    -ms-transform: translateY(-10%);
+    transform: translateY(-10%);
+}
+
+#logo_preview {
+    width: auto;
+    height: 10%;
+    background-size: 10% 10%;
+    background-repeat: no-repeat;
+
+}
+
+#tab_container {
+  width: 100%;
+  background-color: #4B4B4B;
+}
+
+.logo-image{
+  width:5%;
+  height: auto;
+  float: left;"
+}
+
+
+#wrapper {
+  color: white;
+  width:100%;
+  height:100%;
+  position: relative;
+  top:0;left:0;
+}
+
+.outside{
+    position: relative;
+}
+
+.navbar-item a.link-active{
+    border-bottom: 2px;
+}
+
+.tabbtn {
+    background-color: #4B4B4B;
+    color: #111;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    }
+
+.dropdown {
+  position: relative;
+  max-width: 100%;
+  max-height: auto;
+  position: relative;
+  border-bottom: 1px solid #111;
+  border-top: 2px solid #333;
+  background-color: #4B4B4B;
+  color: #E5E5E5;
+  border-radius: 1px 1px 1px 1px;
+
+}
+
+.tab-content {
+  display: none;
+  max-width: 100%;
+  max-height: auto;
+  position: absolute;
+  background-color: #4B4B4B;
+  min-width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.tab-content a {
+  color: #E5E5E5;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.tab-content a:hover {background-color: #ddd;}
+
+.tab:hover .tab-content {display: block;}
+
+.tab:hover .tabbtn {
+background-color: #3e8e41;
+color: #ffffff;}
+
+.tab {
+  max-width: 100%;
+  max-height: auto;
+  position: relative;
+  border-bottom: 1px solid #111;
+  border-top: 2px solid #333;
+  background-color: #4B4B4B;
+  color: #E5E5E5;
+  border-radius: 1px 1px 1px 1px;
+}
+
+.tab-container{
+  max-width: 100%;
+  max-height: auto;
+  border-bottom: 1px solid #111;
+  border-top: 2px solid #333;
+  background-color: #4B4B4B;
+}
+
+
+.tab button {
+  background-color: inherit;
+  border-left: 1px solid #111;
+  border-right: 2px solid #333;
+  width: 20%;
+  float: left;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tab button:hover {
+  background-color: #E5E5E5;
+  color: #4B4B4B;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+
+.tab-content {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.tab-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 1;
+  }
+
+  0% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+  /** Basic styles for an animated element */
+  .scene_element {
+    animation-duration: 0.25s;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
+
+  }
+
+  /** An element that fades in */
+  .scene_element--fadein {
+    animation-name: fadeIn;
+  }
+
+  /** An element that fades in and slides up */
+  .scene_element--fadeinup {
+    animation-name: fadeInUp;
+  }
+
+  /** An element that fades in and slides from the right */
+  .scene_element--fadeinright {
+    animation-name: fadeInRight;
+  }
+
+.separation-bar{
+  height: 3vh;
+  width:100%;
+  background-color:#333;
+  border-bottom: 2px solid #111;
+}
+
+
+.software-content{
+  overflow: hidden;
+  max-width: 100%;
+  max-height: auto;
+  height: 33%;
+  border-bottom: 1px solid #111;
+  border-top: 2px solid #333;
+  background-color: #393939;
+  color: #E5E5E5;
+  border-radius: 1px 1px 1px 1px;
+}
+
+.software-video{
+  max-width: 100%;
+  max-height: auto;
+  padding-left: 1%;
+  border-width: 2px solid #111
+}
+
+.software-image{
+  max-width: 100%;
+  max-height: auto;
+  padding-right: 1%;
+  border-width: 2px solid #111;
+  width: 20%;
+  height:auto;
+  float:right;
+}
