@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <article class="article-split m-page scene_element scene_element--fadeinup" style="overflow: auto;">
+        <h2 class="article-tr-title">Trophy Room</h2>
+        {% for trophypost in articles %}
+                <div class="article-section-reduced" style="overflow: auto; font-size: 2.5vmin; padding-left: 1.2vh; padding-top: 1vh;">
+                    <a href="{% url 'trophy-detail' trophypost.id %}" style="font-size: 2.5vmin;"><h2 style="font-size: 2.5vmin; padding-left: 1.2vh; padding-top: 1vh; vertical-align: middle;">{{ trophypost.title }}</h2></a>
+                </div>
+            {% endfor %}
+    </article>
+    <article class="article-split m-page scene_element scene_element--fadeinup" style="overflow: auto;">
+        <h2 class="article-tr-title">Competitions</h2>
+            {% for competitionspost in competitions %}
+                <div class="article-section-reduced" style="overflow: auto; font-size: 2.5vmin; padding-left: 1.2vh; padding-top: 1vh;">
+                    <a href="{% url 'competitions-detail' competitionspost.id %}" style="font-size: 2.5vmin;"><h2 style="font-size: 2.5vmin; padding-left: 1.2vh; padding-top: 1vh; vertical-align: middle;">{{ competitionspost.title }}</h2></a>
+                </div>
+            {% endfor %}
+    </article>
+    <article class="article-split m-page scene_element scene_element--fadeinup" style="overflow: auto;">
+        <h2 class="article-tr-title">Socials</h2>
+            {% for socialspost in socials %}
+                <div class="article-section-reduced" style="overflow: auto; font-size: 2.5vmin; padding-left: 1.2vh; padding-top: 1vh;">
+                    <a href="{% url 'socials-detail' socialspost.id %}" style="font-size: 2.5vmin;"><h2 style="font-size: 2.5vmin; padding-left: 1.2vh; padding-top: 1vh; vertical-align: middle;">{{ socialspost.title }}</h2></a>
+                </div>
+            {% endfor %}
+    </article>
+    <article class="article-split m-page scene_element scene_element--fadeinup" style="overflow: auto;">
+        <h2 class="article-tr-title">Traditions</h2>
+            {% for traditionspost in traditions %}
+                <div class="article-section-reduced" style="overflow: auto; font-size: 2.5vmin; padding-left: 1.2vh; padding-top: 1vh;">
+                    <a href="{% url 'traditions-detail' traditionspost.id %}" style="font-size: 2.5vmin;"><h2 style="font-size: 2.5vmin; padding-left: 1.2vh; padding-top: 1vh; vertical-align: middle;">{{ traditionspost.title }}</h2></a>
+                </div>
+            {% endfor %}
+    </article>
+{% endblock %}
