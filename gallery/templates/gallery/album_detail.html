@@ -1,0 +1,61 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block title %}
+    {{ album.title }}
+{% endblock %}
+
+{% block header %}
+   <!--  tried removing this to see if a button would appear to upload images now -->
+    <!-- <script type="text/javascript" src="{% static 'gallery/js/image_upload.js' %}"></script> -->
+    <script type="text/javascript" src="{% static 'gallery/js/infinite_scroll.js' %}"></script>
+    {% include "gallery/partials/justify_images.html" %}
+{% endblock %}
+
+{% block bar_title %}
+    <a class="navbar-brand"> {{ album.title }} </a>
+{% endblock %}
+
+
+{% block content %}
+<div id="content">
+<!--<h2>{{ album.title }}</h2>-->
+
+{% if user.is_staff %}
+    <div style="margin-bottom:2vh">
+        {% include "gallery/partials/image_upload_form.html" %}
+    </div>
+{% endif %}
+
+
+    <div id="image_container">
+
+    {% for image in images %}
+        {% if image.get_extension == '.mp4' %}
+            <a href="{% url 'gallery:album_image_detail' album.pk image.pk image.slug %}">
+                {% include "gallery/partials/thumbnail_video.html" %}
+            </a>
+
+        {% else %}
+            <a href="{% url 'gallery:album_image_detail' album.pk image.pk image.slug %}#image_{{ image.pk }}">
+                {% include "gallery/partials/thumbnail_image.html" %}
+            </a>
+
+        {% endif %}
+
+    {% endfor %}
+
+{% load static %}
+
+    {% if not album.images.all and user.is_staff %}
+
+        <div>
+            Add images into the album
+        </div>
+
+    {% endif %}
+
+    </div>
+</div>
+{% endblock %}

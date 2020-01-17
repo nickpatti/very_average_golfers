@@ -1,0 +1,200 @@
+<!doctype html>
+{% load staticfiles %}
+
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>V.A.G Society</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'gallery/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'gallery/css/gallery.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    {% block header %}
+    {% endblock %}
+    <style>
+    .dropbtn {
+    background-color: #4CAF50;
+    color: #cbd5db;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #ddd;}
+
+    .dropdown:hover .dropdown-content {display: block;}
+
+    .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+    color: #ffffff;}
+
+    </style>
+
+    {% if colourscheme.colourpicker == 'green' %}
+      <style>
+      .dropbtn {background-color: #20A020;}
+      .dropdown-content a:hover {background-color: #29C929;}
+      .dropdown:hover .dropbtn {background-color: #29C929;}
+      .dropdown-content {background-color: #20A020;} /*#27ae60*/
+      body {background-image: url("/static/images/golf.jpg");
+            background-color: #E9F7EF;}
+      .content-section {background-color: #F0F0F0;
+                        border: 2px solid #C0C0C0;
+                        color: #000000;}
+      h1, h2, h3, h4, h5, h6 {color: #000000;}
+      .article-title {color: #000000;}
+      p {color: #000000;}
+      </style>
+    {% endif %}
+
+    {% if colourscheme.colourpicker == 'night' %}
+      <style>
+      .dropbtn {background-color: #000000;}
+      .dropdown-content a:hover {background-color: #343a40;}
+      .dropdown:hover .dropbtn {background-color: #343a40;}
+      .dropdown-content {background-color: #000000;}
+      body {background-color: #3d3d3d;}
+      .content-section {background-color: #2d2d2d;
+                        border: 5px solid #000000;
+                        color: #ffffff;}
+      h1, h2, h3, h4, h5, h6 {color: #ffffff;}
+      .article-title {color: #ffffff;}
+      p, form, a {color: #ffffff;}
+      .img-thumbnail{border-color: #000000;}
+
+      </style>
+    {% endif %}
+
+    {% if colourscheme.colourpicker == 'sunburst' %}
+      <style>
+      .dropbtn {background-color: #b20000;}
+      .dropdown-content a:hover {background-color: #fbd936;}
+      .dropdown:hover .dropbtn {background-color: #ff781d;}
+      .dropdown-content {background-color: #ff1d1d;}
+      body {background-image: url("/static/images/sunset.jpg");
+      background-size: 100% 100%;
+        background-color: #f6afaf;}
+      .content-section {background-color: #ffea73;
+                        border: 7px solid #ffa500;
+                        border-radius: 45px;}
+      </style>
+    {% endif %}
+
+    {% if colourscheme.colourpicker == 'classic' %}
+      <style>
+      .dropbtn {background-color: #102D9A;}
+      .dropdown-content a:hover {background-color: #113FEB;}
+      .dropdown:hover .dropbtn {background-color: #113FEB;}
+      .dropdown-content {background-color: #102D9A;}
+      .content-section {border: 2px solid #102D9A;}
+      body {background-color: #f3f3f3;}
+      </style>
+
+    {% endif %}
+
+    {% if colourscheme.colourpicker == 'metalic' %}
+      <style>
+      body {background-image: url("/static/images/metallic.jpg");
+            background-size: 100% 100%;}
+      .dropbtn {background-color: #737373;}
+      .dropdown-content a:hover {background-color: #666666;}
+      .dropdown:hover .dropbtn {background-color: #666666;}
+      .dropdown-content {background-color: #737373;}
+      </style>
+    {% endif %}
+
+</head>
+
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-{{ colourscheme.colourpicker }} fixed-top">
+    <div class="container">
+      <a class="navbar-brand mr-4" style="width:5%; height:auto;" href="{% url 'vag-home' %}"><img style="padding:1px; border:1px solid #021a40;" src="{% static 'images/vag_logo.jpg' %}" /></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="{% url 'members' %}">Members</a>
+          <div class="dropdown">
+            <button class="dropbtn" href="{% url 'vag-home' %}">Articles of Association</button>
+            <div class="dropdown-content">
+              <a class="nav-item nav-link" href="{% url 'trophy-room' %}">The Trophy Room</a>
+              <a class="nav-item nav-link" href="{% url 'competitions' %}">The Competitions</a>
+              <a class="nav-item nav-link" href="{% url 'socials' %}">The Socials</a>
+              <a class="nav-item nav-link" href="{% url 'traditions' %}">The Traditions</a>
+            </div>
+          </div>
+          <a class="nav-item nav-link" href="{% url 'gallery:album_list' %}">Gallery</a>
+          <div class="dropdown">
+            <button class="dropbtn" href="{% url 'vag-home' %}">Roll Of Honour</button>
+            <div class="dropdown-content">
+              <a class="nav-item nav-link" href="{% url 'roll-event' %}">Roll by Event</a>
+              <a class="nav-item nav-link" href="{% url 'roll-year' %}">Roll by Year</a>
+            </div>
+          </div>
+          <a class="nav-item nav-link" href="{% url 'links' %}">Links</a>
+        </div>
+      </div>
+    <div class="navbar-nav">
+      {% if user.is_staff %}
+        {% block postaction %}
+        {% endblock %}
+      {% endif %}
+        {% if user.is_authenticated %}
+          <a class="nav-item nav-link" href="{% url 'profile' %}">{{user}} Profile</a>
+          <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+          <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+        {% endif %}
+          <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<h4><a class="navbar-brand">
+    {% block bar_title %}
+    <a class="navbar-brand">{{ gallery_title }}</a>
+    {% endblock %}
+
+</a></h4> <!-- top_bar -->
+
+<div id="content">
+
+    {% block content %}
+    {% endblock %}
+
+</div> <!--content-->
+
+</body>
+
+</html>

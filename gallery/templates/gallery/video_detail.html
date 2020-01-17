@@ -1,0 +1,71 @@
+{% extends "gallery/gallery_base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {% if videoalbum %}{{ videoalbum.title }} - {% endif %}{{ video.title }}
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block bar_title %}
+    <div id="title">{% if videoalbum %} {{ videoalbum.title }} - {% endif %} {{ video.title }}</div>
+{% endblock %}
+
+{% block content %}
+
+<!--
+<h3 id="album_subheading">{{ album.title }}</h3>
+<h2>{{ image.title }}</h2>
+-->
+<div id="video_preview" style="text-align: center">
+    <a href="{{ video.data.url }}">
+        <video width="1080" height="630" controls>
+            <source src='{{ video.data.url }}' type='video/mp4'/>
+            Your browser does not support the video tag.
+        </video>
+    </a>
+</div>
+
+
+<div id="content" style="text-align: left">
+    <h4>Comments</h4>
+{% if video.videocomments_set.all %}
+    {% for videocomments in video.videocomments_set.all %}
+
+        <article class="media content-section">
+            <img class="rounded-circle account-img" src="{{videocomments.user.profile.image.url}}">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">{{ videocomments.content }}</p>
+                        <hr>
+                        <footer class="blockquote-footer">{{ videocomments.user }} {{ videocomments.timestamp|timesince }}</cite></footer>
+                        </hr>
+                    </blockquote>
+                </div>
+            </div>
+        </article>
+
+    {% endfor %}
+</div>
+{% else %}
+    <h6>Be the first to comment</h6>
+    <hr>
+{% endif %}
+{% if user.is_authenticated %}
+    <form method="POST" action='' enctype='multipart/form-data' style="height: 10px;">
+        {% csrf_token %}
+        <fieldset class="form-group col-md-12">
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Post</button>
+        </div>
+    </form>
+{% endif %}
+<!--{{ image.exif }}-->
+
+{% endblock %}

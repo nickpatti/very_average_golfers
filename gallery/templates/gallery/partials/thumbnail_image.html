@@ -1,0 +1,47 @@
+{% if image.imagecomments_set.all %}
+{% load static %}
+{% load thumbnail %}
+
+        <div class="thumbnail">
+
+            {% thumbnail image.data "500x500" crop="center" as im %}
+
+            <img id="image_{{ image.pk }}"
+                 class="image"
+                 data-src="{{ im.url }}"
+                 style="width: {% widthratio image.data.width 2 1 %}px;
+                        margin-right: {{ image_margin }}px"/>
+
+            {% endthumbnail %}
+            <div class="overlay">
+
+                <div class="label">
+                    <img src="{% static 'images/comment_image1.png' %}" />
+                </div>
+
+            </div>
+
+        </div>
+
+{% else %}
+
+    <div class="thumbnail">
+
+        {% thumbnail image.data "500x500" crop="center" as im %}
+
+        <img id="image_{{ image.pk }}"
+             class="image"
+             data-src="{{ im.url }}"
+             style="width: {% widthratio image.data.width 2 1 %}px;
+                    margin-right: {{ image_margin }}px"/>
+
+        {% endthumbnail %}
+
+        <div class="overlay">
+
+            <div class="label"></div>
+
+        </div>
+
+    </div>
+{% endif %}

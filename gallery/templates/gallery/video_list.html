@@ -1,0 +1,49 @@
+{% extends "gallery/gallery_base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ gallery_title }}
+{% endblock %}
+
+{% block header %}
+
+    <script type="text/javascript" src="{% static 'gallery/js/image_upload.js' %}"></script>
+    <script type="text/javascript" src="{% static 'gallery/js/infinite_scroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'gallery/js/justify_videos.js' %}"></script>
+
+{% endblock %}
+
+{% block bar_title %}
+    <div id="title">{{ gallery_title }}</div>
+{% endblock %}
+
+{% block content %}
+
+{% include "gallery/partials/video_upload_form.html" %}
+
+<div id="image_container">
+
+    {% for video in video_list %}
+
+        <p>testing if this works yet part 2</p>
+        <a href="{% url 'gallery:video_detail' video.pk video.slug %}">
+
+            {% include "gallery/partials/video_thumbnail.html" %}
+
+        </a>
+
+    {% endfor %}
+
+
+    {% if not video_list and user.is_authenticated %}
+
+        <p>or if this works</p>
+        <div id="empty_placeholder">
+            Drag videos into this box to upload to the video feed
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

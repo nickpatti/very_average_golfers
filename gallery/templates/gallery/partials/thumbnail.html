@@ -1,0 +1,56 @@
+{% if image.imagecomments_set.all %}
+{% load static %}
+{% load thumbnail %}
+
+        <div class="thumbnail">
+
+            {% thumbnail image.data "500x500" crop="center" as im %}
+
+            <img id="image_{{ image.pk }}"
+                 class="image"
+                 data-src="{{ im.url }}"
+                 style="width: {% widthratio image.data.width 2 1 %}px;
+                        margin-right: {{ image_margin }}px"/>
+
+            {% endthumbnail %}
+            <div class="overlay">
+
+                <div class="label">{{ image.title }}
+                    <img src="{% static 'images/comment_image1.png' %}" />
+                </div>
+
+            </div>
+
+        </div>
+
+{% else %}
+
+    <div class="thumbnail">
+
+        {% thumbnail image.data "500x500" crop="center" as im %}
+
+        <img id="image_{{ image.pk }}"
+             class="image"
+             data-src="{{ im.url }}"
+             style="width: {% widthratio image.data.width 2 1 %}px;
+                    margin-right: {{ image_margin }}px"/>
+
+        {% endthumbnail %}
+
+        <div class="overlay">
+
+            <div class="label">{{ image.title }}</div>
+
+        </div>
+
+    </div>
+{% endif %}
+
+{% if image.get_extension == '.mp4' %}
+    <a href="{% url 'gallery:image_detail' image.pk image.slug %}">
+        <video style="float: left; margin: 0px 0px 0px 0px; border: 3px solid grey" width="240" height="240" controls>
+            <source src='{{ image.data.url }}' type='video/mp4'/>
+            Your browser does not support the video tag.
+        </video>
+    </a>
+{% endif %}

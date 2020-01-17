@@ -1,0 +1,65 @@
+{% extends "gallery/gallery_base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ videoalbum.title }}
+{% endblock %}
+
+{% block header %}
+    <script type="text/javascript" src="{% static 'gallery/js/image_upload.js' %}"></script>
+    <script type="text/javascript" src="{% static 'gallery/js/infinite_scroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'gallery/js/justify_images.js' %}"></script>
+{% endblock %}
+
+{% block bar_title %}
+    <a class="navbar-brand"> {{ videoalbum.title }} </a>
+{% endblock %}
+
+
+{% block content %}
+
+<!--<h2>{{ album.title }}</h2>-->
+
+{% include "gallery/partials/video_upload_form.html" %}
+
+<div id="image_container">
+    {% for video in videos %}
+        {% if video.videocomments_set.all %}
+
+
+            <a href="{% url 'gallery:video_detail' video.pk video.slug %}">
+            <video style="float: left; margin: 0px 0px 15px 15px; border: 5px solid green" width="400" height="100%" controls>
+                <source src='{{ video.data.url }}' type='video/mp4'/>
+                Your browser does not support the video tag.
+            </video>
+            </a>
+        {% else %}
+            <a href="{% url 'gallery:video_detail' video.pk video.slug %}">
+            <video style="float: left; margin: 0px 0px 15px 15px; border: 5px solid grey" width="400" height="100%" controls>
+                <source src='{{ video.data.url }}' type='video/mp4'/>
+                Your browser does not support the video tag.
+            </video>
+            </a>
+        {% endif %}
+    {% endfor %}
+
+
+
+{% load static %}
+
+    <!-- <video width="320" height="240" controls>
+        <source src="{% static 'images/vag_logo_trans.gif' %}" type='video/mp4'/>
+        Your browser does not support the video tag.
+    </video> -->
+
+    {% if not videoalbum.video.all and user.is_authenticated %}
+
+        <div id="empty_placeholder">
+            Drag videos into this box to upload to the album
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
