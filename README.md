@@ -13,6 +13,9 @@ The website includes the following features:
 - A changelog - I added a changelog of my own volition - I frequently provide updates to the website and this is a good way to check if any bugs make it past unit tests.
 - Responsive design - most css values are based off of screen size so the website looks similar on all devices.
 - Ability to switch between two different web designs.
+- Authentication for the four members of the society, with one member having staff permissions. This is so that only the staff member can edit the content, however, the other members can leave comments.
 
 
 A year after creating this website, I went back and rehauled the whole front-end, creating a new base template and a new css. I decided I would give the client the option to switch between which template they wanted to use, as we found it quite funny how much I had grown in just a year. Needless to say they now keep the website with the new look.
+
+I enjoy updating this website - I have an agreement with the client to continue maintanance and to use this platform to test any new features I want to include on other websites.
