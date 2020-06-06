@@ -28,7 +28,7 @@ jmespath==0.9.4
 MouseInfo==0.1.2
 paramiko==2.4.2
 pilkit==2.0
-Pillow==5.4.1
+pillow>=6.2.2
 psycopg2==2.8.3
 pyasn1==0.4.5
 PyAutoGUI==0.9.48
